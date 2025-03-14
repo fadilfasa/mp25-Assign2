@@ -5,13 +5,14 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val editText1 = findViewById<EditText>(R.id.editTextNumber)
+        val editText1 = findViewById<EditText>(R.id.editTextNumber1)
         val editText2 = findViewById<EditText>(R.id.editTextNumber2)
         val textView = findViewById<TextView>(R.id.Textview)
 
@@ -28,24 +29,25 @@ class MainActivity : AppCompatActivity() {
                 textView.text = "Masukkan angka yang valid!"
                 return null
             }
+
             return Pair(num1, num2)
         }
 
         buttonTambah.setOnClickListener {
             getNumbers()?.let { (num1, num2) ->
-                textView.text = "Hasil: ${num1 + num2}"
+                textView.text = "Hasil Penjumlahan: ${num1 + num2}"
             }
         }
 
         buttonKurang.setOnClickListener {
             getNumbers()?.let { (num1, num2) ->
-                textView.text = "Hasil: ${num1 - num2}"
+                textView.text = "Hasil Pengurangan: ${num1 - num2}"
             }
         }
 
         buttonKali.setOnClickListener {
             getNumbers()?.let { (num1, num2) ->
-                textView.text = "Hasil: ${num1 * num2}"
+                textView.text = "Hasil Perkalian: ${num1 * num2}"
             }
         }
 
@@ -54,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                 if (num2 == 0.0) {
                     textView.text = "Tidak bisa dibagi dengan nol!"
                 } else {
-                    textView.text = "Hasil: %.2f".format(num1 / num2)
+                    textView.text = "Hasil Pembagian: %.2f".format(num1 / num2)
                 }
             }
         }
